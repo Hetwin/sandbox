@@ -12,6 +12,7 @@ WORKDIR /app
 
 # COPY app/shell.sh /app/
 ADD . /app
+RUN /app/app/shell.sh
 
 ENV ROOT=true
 
