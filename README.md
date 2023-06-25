@@ -20,10 +20,10 @@ Again open Windows PowerShell on your windows computer and insert the command li
 ```bash
 whoami
 ```
-With this command, you get your current username. Insert the username on the placeholder position <USER> and run the following command
+With this command, you get your current username. Insert the username on the placeholder position **USER** and run the following command
 
 ```bash
-docker run -d -p 8888:8888 -v c:/Users/<USER>/Desktop/work:/home/jovyan/work --name ds -e JUPYTER_TOKEN='easy' jupyter/tensorflow-notebook:2023-06-01
+docker run -d -p 8888:8888 -v c:/Users/**USER**/Desktop/work:/home/jovyan/work --name ds -e JUPYTER_TOKEN='easy' jupyter/tensorflow-notebook:2023-06-01
 ```
 
 
