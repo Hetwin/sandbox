@@ -25,5 +25,7 @@ With this command, you get your current username. Insert the username on the pla
 ```bash
 docker run -d -p 8888:8888 -v c:/Users/USER/Desktop/work:/home/jovyan/work --name ds -e JUPYTER_TOKEN='easy' jupyter/tensorflow-notebook:2023-06-01
 ```
-
 Explain the docker commands step by step....
+
+## Navigate to Jupyter Lab
+In the Docker Container 
