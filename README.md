@@ -7,11 +7,11 @@ This issue can be solved by using a development environment running in a Docker 
 
 ## Get Docker for Windows
 Before you can start, you need to install Docker for Windows. If you are not familiar with the installation of Docker for Windows you can use an installation guide provided on youtube. 
-If you have successfully installed Docker for Windows you can open the PowerShell and insert in the command line
+If you successfully install Docker for Windows you can open the PowerShell on Windows and insert in the command line
 
-````bash
+``` bash
 docker version
-````
+``` bash
 
 If everything works fine, you get detailed information about your Docker version. That’s it! 
 
