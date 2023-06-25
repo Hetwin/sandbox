@@ -26,17 +26,4 @@ With this command, you get your current username. Insert the username on the pla
 docker run -d -p 8888:8888 -v c:/Users/USER/Desktop/work:/home/jovyan/work --name ds -e JUPYTER_TOKEN='easy' jupyter/tensorflow-notebook:2023-06-01
 ```
 
-
-
-
-
-
-
-
-## docker build
-````
-docker build --build-arg DISABLE_AUTH=true -f Dockerfile .
-
-docker build -f Dockerfile .
-
-````
+Explain the docker commands step by step....
