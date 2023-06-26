@@ -17,10 +17,12 @@ If everything works fine, you get detailed information about your Docker version
 
 ## Create a Docker container
 Again open Windows PowerShell on your windows computer and insert the command line
+
 ```bash
 whoami
 ```
-With this command, you get your current username. Insert the username on the placeholder position **USER** in the following command line and run the code.
+
+With this command, you get your current username. Insert the username on the placeholder position **USER** in the following command line and run the code. The execution will take some time.
 
 ```bash
 docker run -d -p 8888:8888 -v c:/Users/USER/Desktop/work:/home/jovyan/work --name ds -e JUPYTER_TOKEN='easy' jupyter/tensorflow-notebook:2023-06-01
@@ -28,4 +30,27 @@ docker run -d -p 8888:8888 -v c:/Users/USER/Desktop/work:/home/jovyan/work --nam
 Explain the docker commands step by step....
 
 ## Navigate to Jupyter Lab
-In the Docker Container 
+After executing the command line, Jupyter Lab is running in a Docker container. You can navigate to Jupyter Lab with your preferred web browser. Paste the link http://localhost:8888/ and then enter the password “easy”. 
+
+(Insert screen shot)
+
+## Start and Stop container
+In this example the docker container is called **ds**. This name is used to start and stop the docker container. Is the container running, you can stop the execution with the following command
+
+```bash
+docker container stop ds
+```
+
+Vice versa you can start again the docker container with the command 
+
+```bash
+docker container start ds
+```
+
+Please keep in mind that the name of the docker container should be unique. If you want to **run** the docker container again, you have to remove it first or give the new container another name. You can remove the container with the command
+
+```bash
+docker container rm ds
+```
+
+
