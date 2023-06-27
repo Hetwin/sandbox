@@ -3,20 +3,24 @@
 ## Motivation
 "Code in the wild" for data science application are the perfect starting point to learn something new. Unfortunately, it is very painful to get the code running especially if you are not familiar with the detailed information about the environment setup.
 
-This issue can be solved by using a development environment running in a Docker container, which is created by a predefined Docker image like [Jupyter Stack](https://jupyter-docker-stacks.readthedocs.io/en/latest/). The developer can provide the code and the related development environment. Then you only need to run the code and reproduce the result in an easy way. No time wasting effort anymore!
+This issue can be solved by using a development environment running in a Docker container, which is created by a predefined Docker image see [Jupyter Stack](https://jupyter-docker-stacks.readthedocs.io/en/latest/). The developer can provide the code and the related development environment. Then the code can easily be executed and the provided outputs are reproduced. No time wasting effort anymore for create a suitable development environment!
 
 ## Get Docker for Windows
-Before you can start, you need to install [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/). If you are not familiar with the installation of Docker for Windows you can use an installation guide provided on [Youtube](https://www.youtube.com/). 
-If you have successfully installed Docker for Windows you can open the PowerShell and insert in the command line
+Before you can start, you need to install [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/). If you are not familiar with the installation of Docker for Windows you can use an installation guide provided on for example [Youtube](https://www.youtube.com/). 
+If you have successfully installed Docker for Windows you can open the PowerShell and paste in the command line
 
 ```bash
 docker version
 ```  
 
-If everything works fine, you get detailed information about your Docker version. That’s it! Now you can use the Docker engine.
+If everything works fine, you get detailed information about your Docker version. 
+
+![output_docke_version](images/output_docke_version.jpg) 
+
+That’s it! Now you can use the Docker engine.
 
 ## Create a Docker container
-Again open Windows PowerShell on your windows computer and insert the command line
+Again open Windows PowerShell on your windows computer and paste the command line
 
 ```bash
 whoami
@@ -35,16 +39,22 @@ docker run -d `
 
 This command contains the following options: 
 
-- **docker run**: Creates a Docker contrainer based on the Docker image (jupyter/tensorflow-notebook:2023-06-01). The date 2023-06-01 specifies the version of the image
-- **-p 8888:8888**: Specifies the used ports. You need the port for navigating to Jupyter Lab with the web browser (see localhost:8888)
-- **-v c:/Users/USER/Desktop/work:/home/jovyan/work**: Creates a volumn. Simply speaking it creates the folder *work* on the Desktop, which provides an easy access point for uploading data.  
-- **--name ds**: The name of the Docker container. Useful for identifying this Docker container.
+- **docker run**: Creates a Docker contrainer based on the Docker image (jupyter/tensorflow-notebook:2023-06-01). The date 2023-06-01 specifies the version of the image.
+- **-p 8888:8888**: Specifies the used ports. You need the port to navigate to Jupyter Lab from the web browser (see localhost:8888)
+- **-v c:/Users/USER/Desktop/work:/home/jovyan/work**: Creates a volume. Simply speaking it creates the folder *work* on the Desktop, which provides an easy access point for uploading data to Jupyter Lab.  
+- **--name ds**: The name of the Docker container. Useful for identifying the Docker container. The name have to be unique for every docker container.
 - **-e JUPYTER_TOKEN='easy'**: Set up the password for the Jupyter Lab. Necessary for safety purpose.
 
 ## Navigate to Jupyter Lab
 After executing the command line, Jupyter Lab is running in a Docker container. You can navigate to Jupyter Lab with your preferred web browser. Paste the link http://localhost:8888/ and then enter the password “easy”. 
 
-(Insert screen shot)
+![Login_page_Jupyte_Lab](images/Login_page_Jupyte_Lab.jpg) 
+
+You are logged in the local Jupyter Lab server and the launcher are opened.
+
+![Launcher_Jupyter_Lab](images/Launcher_Jupyter_Lab.jpg) 
+
+Now you can start to work with Jupyter Lab.
 
 ## Start and Stop container
 In this example the Docker container is called **ds**. This name is used to start and stop the Docker container. Is the container running, you can stop the execution with the following command
@@ -65,10 +75,10 @@ Please keep in mind that the name of the Docker container should be unique. If y
 docker container rm ds
 ```
 
-Now you are able to apply your first Docker commands and run Jupyter Lab in a Docker container. Let's come back to use case from the beginning. 
+Now you are able to apply your first Docker commands and run Jupyter Lab in a Docker container. Let's come back to the use case from the beginning. 
 
 ## Use Case: Jupyter Lab in Docker container
-In the following we are using three very popular technologies Docker, Git / GitHub and Jupyter Lab (with Python) to execute a simply python code. The main idea is not only to get a code example but also the related development environment.
+In the following we are using three very popular technologies Docker, Git / GitHub and Jupyter Lab (with Python) to execute a simple python code. The main idea is not only to get a code example but also the related development environment.
 
 ### 1. Step: Start a Docker container for Jupyter Lab
 Before you can run the example python code you need to start or create a suitable development environment. If the Docker container with the Jupyter Lab already exists (check with the following command),
@@ -81,16 +91,20 @@ you only need to **start** the container. Otherwise you have to create the Docke
 When Jupyter Lab is successfully running you are ready for the second step.
 
 ### 2. Step: Download example python code from GitHub
-Now navigate to the folder work and open a Python notebook. **Clone** the GitHub repository sandbox by executing the following command in the opened python notebook.
+Now navigate to the folder "work" and open a Python notebook. **Clone** the GitHub repository "sandbox" by executing the following command in the opened python notebook.
 
 ````python
 ! git clone https://github.com/Hetwin/sandbox.git
 ````
 
-In the listed folder of Jupyter Lab appears the folder sandbox. Moreover you can also find this folder on your Desktop in the folder work, which is the same folder as in the Jupyter Lab. Finally delete the opened Python notebook.
+In the listed folder of Jupyter Lab appears the folder "sandbox". 
+
+![Cloned_repository](images/Cloned_repository.jpg)
+
+Moreover you can also find this folder on your Desktop in the folder "work", which is the same folder as in the Jupyter Lab. Finally delete the opened Python notebook.
 
 ### 3. Step: Execute the example python code
-In the last step you can open and execute the python file simple_example_keras.ipynb in the same development environment, in which it was developed. That's it. This is the genius idea behind a complete reproducible code without any effort. 
+In the last step you can open and execute the python file simple_example_keras.ipynb in the same development environment, in which it was developed. That's it! This is the genius idea behind a complete reproducible code without any effort. 
 
 ## Conclusion
 Based on the simple use case I introduced three popular technologies
