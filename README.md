@@ -47,10 +47,11 @@ Vice versa you can start again the docker container with the command
 docker container start ds
 ```
 
-Please keep in mind that the name of the docker container should be unique. If you want to **run** the docker container again, you have to remove it first or give the new container another name. You can remove the container with the command
+Please keep in mind that the name of the docker container should be unique. If you want to **run** the docker container again, you have to remove it first or give the new container another unique name. You can remove the container with the command
 
 ```bash
 docker container rm ds
 ```
+
 
 
