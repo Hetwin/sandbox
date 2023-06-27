@@ -47,11 +47,40 @@ Vice versa you can start again the docker container with the command
 docker container start ds
 ```
 
-Please keep in mind that the name of the docker container should be unique. If you want to **run** the docker container again, you have to remove it first or give the new container another unique name. You can remove the container with the command
+Please keep in mind that the name of the docker container should be unique. If you want to **run** the docker container again (do not confuse with start), you have to remove it first or give the new container another unique name. You can remove the container with the command
 
 ```bash
 docker container rm ds
 ```
+
+Now you are able to apply your first docker commands and run Jupyter Lab in a docker container. Let's come back to use case from the beginning. 
+
+## Use Case: Jupyter Lab in Docker container
+In the following we are using three very popular technologies Docker, Git / GitHub and Jupyter Lab (with Python) to execute a simply python code. The main idea is not only to get a code example but also the related development environment.
+
+### 1. Step: Start a Docker container for Jupyter Lab
+Before you can run the example python code you need to start or create a suitable development environment. If the docker container with the Juypter Lab already exists (you can check with the following command).
+
+```bash
+docker container list
+```
+
+You only need to **start** the container. Otherwise you have to create the docker container with the **run** command.
+When Jupyter Lab is successfully running you are ready for the second step.
+
+### 2. Step: Download example pyhton code from GitHub
+Now navigate to the folder work and open a Python notebook. **Clone** the GitHub repository sandbox by executing the following command in the opened python notebook.
+
+````python
+! git clone https://github.com/Hetwin/sandbox.git
+````
+
+In the listed folder of Jupyter Lab appears the folder sandbox. Moreover you can also find this folder on your Desktop in the folder work, which is the same folder as in the Jupyter Lab. Finally delete the opend Python notebook.
+
+### 3. Step: Execute the example python code
+In the last step you can open and execute the python file simple_example_keras.ipynb in the same development environment, in which it was developed. That's it. This is the genius idea behind a complete repoduceable code without any effort. 
+
+## Conclusion
 
 
 
