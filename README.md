@@ -3,7 +3,7 @@
 ## Motivation
 "Code in the wild" for data science application are the perfect starting point to learn something new. Unfortunately, it is very painful to get the code running especially if you are not familiar with the detailed information about the environment setup.
 
-This issue can be solved by using a development environment running in a Docker container, which is created by a predefined Docker image like [Juypter Stack](https://jupyter-docker-stacks.readthedocs.io/en/latest/). The developer can provide the code and the related development environment. Then you only need to run the code and reproduce the result in an easy way. No time wasting effort anymore!
+This issue can be solved by using a development environment running in a Docker container, which is created by a predefined Docker image like [Jupyter Stack](https://jupyter-docker-stacks.readthedocs.io/en/latest/). The developer can provide the code and the related development environment. Then you only need to run the code and reproduce the result in an easy way. No time wasting effort anymore!
 
 ## Get Docker for Windows
 Before you can start, you need to install [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/). If you are not familiar with the installation of Docker for Windows you can use an installation guide provided on [Youtube](https://www.youtube.com/). 
@@ -22,12 +22,24 @@ Again open Windows PowerShell on your windows computer and insert the command li
 whoami
 ```
 
-With this command, you get your current username. Insert the username on the placeholder position **USER** in the following command line and run the code. The execution will take some time.
+With this command, you get your current username. Insert the username at the placeholder position **USER** in the following command line and run the code (works only in PowerShell!). If the Docker image is not already installed, the execution will take some time.
 
-```bash
-docker run -d -p 8888:8888 -v c:/Users/USER/Desktop/work:/home/jovyan/work --name ds -e JUPYTER_TOKEN='easy' jupyter/tensorflow-notebook:2023-06-01
+```docker
+docker run -d `
+	-p 8888:8888 `
+	-v c:/Users/USER/Desktop/work:/home/jovyan/work `
+	--name ds `
+	-e JUPYTER_TOKEN='easy' `
+	jupyter/tensorflow-notebook:2023-06-01
 ```
-Explain the Docker commands step by step....
+
+This command contains the following options: 
+
+- **docker run**: Creates a Docker contrainer based on the Docker image (jupyter/tensorflow-notebook:2023-06-01). The date 2023-06-01 specifies the version of the image
+- **-p 8888:8888**: Specifies the used ports. You need the port for navigating to Jupyter Lab with the web browser (see localhost:8888)
+- **-v c:/Users/USER/Desktop/work:/home/jovyan/work**: Creates a volumn. Simply speaking it creates the folder *work* on the Desktop, which provides an easy access point for uploading data.  
+- **--name ds**: The name of the Docker container. Useful for identifying this Docker container.
+- **-e JUPYTER_TOKEN='easy'**: Set up the password for the Jupyter Lab. Necessary for safety purpose.
 
 ## Navigate to Jupyter Lab
 After executing the command line, Jupyter Lab is running in a Docker container. You can navigate to Jupyter Lab with your preferred web browser. Paste the link http://localhost:8888/ and then enter the password “easy”. 
@@ -59,7 +71,7 @@ Now you are able to apply your first Docker commands and run Jupyter Lab in a Do
 In the following we are using three very popular technologies Docker, Git / GitHub and Jupyter Lab (with Python) to execute a simply python code. The main idea is not only to get a code example but also the related development environment.
 
 ### 1. Step: Start a Docker container for Jupyter Lab
-Before you can run the example python code you need to start or create a suitable development environment. If the Docker container with the Juypter Lab already exists (check with the following command),
+Before you can run the example python code you need to start or create a suitable development environment. If the Docker container with the Jupyter Lab already exists (check with the following command),
 
 ```bash
 docker container list
