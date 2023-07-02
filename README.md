@@ -20,18 +20,12 @@ If everything works fine, you get detailed information about your Docker version
 That’s it! Now you can use the Docker engine.
 
 ## Create a Docker container
-Again open Windows PowerShell on your windows computer and paste the command line
-
-```bash
-whoami
-```
-
-With this command, you get your current username. Insert the username at the placeholder position **USER** in the following command line and run the code (works only in PowerShell!). If the Docker image is not already installed, the execution will take some time.
+Again open Windows PowerShell on your windows computer and paste the command line. Execute the code (works only in PowerShell!). If the Docker image is not already installed, the execution will take some time.
 
 ```docker
 docker run -d `
 	-p 8888:8888 `
-	-v c:/Users/USER/Desktop/work:/home/jovyan/work `
+	-v c:/Users/$env:username/Desktop/work:/home/jovyan/work `
 	--name ds `
 	-e JUPYTER_TOKEN='easy' `
 	jupyter/tensorflow-notebook:2023-06-01
